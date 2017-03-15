@@ -4,11 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
+import fixture.category.Small;
 
+@Category(Small.class)
 //告诉PowerMock为我提前准备一个xxx的class
 @PrepareForTest(EmployeeServiceB.class)
 public class testLocalVariable {
@@ -19,8 +23,8 @@ public class testLocalVariable {
 	@Test
 	public void test()
 	{
-		int total =1;
-	EmployeeDaoB employeeDao = PowerMockito.mock(EmployeeDaoB.class);
+		int total = 1;
+		EmployeeDaoB employeeDao = PowerMockito.mock(EmployeeDaoB.class);
 		try {
 			System.out.println(total);
 		//do..when ..then
@@ -30,6 +34,7 @@ public class testLocalVariable {
 		EmployeeServiceB service = new EmployeeServiceB();		
 		total = service.getTotalEmployee();
 
+		Mockito.verify(employeeDao).getTotal();
 		assertEquals(10, total);
 		} catch (Exception e) {
 			System.out.println(total);

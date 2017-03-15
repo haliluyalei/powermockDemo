@@ -4,11 +4,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
+import fixture.category.Small;
+
+@Category(Small.class)
 @PrepareForTest(EmployeeServiceH.class)
 public class testcaseSpies {
 	
